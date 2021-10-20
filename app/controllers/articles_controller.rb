@@ -1,6 +1,8 @@
-class ArticlesController < ApplicationController
+# frozen_string_literal: true
 
-  http_basic_authenticate_with name: "Eduin", password: "secret", except: [:index, :show]
+# Article controller: Controller to set all the methods and relations about Article.
+class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'Eduin', password: 'secret', except: %i[index show]
 
   def index
     @articles = Article.all
@@ -46,8 +48,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :body, :status)
-    end
 
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
