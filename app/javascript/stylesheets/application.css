@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+.div-1{
+  @apply flex justify-center;
+}
+.btn-1{
+  @apply text-black border border-black py-2 px-3 m-6 rounded-lg bg-yellow-400 text-center w-20;
+}

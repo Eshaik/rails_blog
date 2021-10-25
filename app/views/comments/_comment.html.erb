@@ -1,18 +1,26 @@
-<% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+<div class="bg-gray-500 h-56 my-3">
+  <div class="m-6 space-x-5">
+    <h2 class="text-4xl my-7 py-1">Comments</h2>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+    <% unless comment.archived? %>
 
-  <p>
-    <%= link_to 'Destroy Comment', [comment.article, comment],
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-  </p>
+      <p class="my-5">
+        <strong>Commenter:</strong>
+        <%= comment.commenter %>
+      </p>
 
-<% end %>
+      <p class="my-5">
+        <strong>Comment:</strong>
+        <%= comment.body %>
+      </p>
+
+      <p>
+        <%= link_to 'Destroy Comment',[comment.article, comment],
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class:"text-black border border-black py-2 px-3 my-5 rounded-lg bg-yellow-400 text-center w-20"%>
+      </p>
+    <% end %>
+  </div>
+  
+</div>
