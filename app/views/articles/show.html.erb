@@ -1,18 +1,61 @@
-<h1><%= @article.title %></h1>
+<%= render 'navbar' %>
 
-<p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
+<div class="d-flex" style="width: 100%">
+  <div class="div-index"></div>
+  <div class="div-indexm">
+    <div class="m-0 p-2 row justify-content-center">
+      <%= link_to root_path do %>
+        <img src="https://img.icons8.com/ios-filled/50/000000/back.png"/>
+      <% end %>
+      <div class="card col-auto text-center" style="width: 40rem; margin-top: 1rem">
+        <div class="card-body" >
+          <div>
+            <h1 class="card-title"> <%= @article.title %> </h5>
+            <hr>
+          </div>
+          <p class="card-text">
+            <%= @article.body %>
+          </p>
+          <div class>
+            <p class="card-text" style="margin-right: 2rem">
+              <i class="fas fa-user"></i>
+              By: 
+            </p>
+            <p class="card-text" style="margin-right: 2rem">
+               <i class="fas fa-calendar-day"></i>
+               Created on <%= @article.created_at.strftime("%B %d, %Y") %>
+             </p>
+             <% unless @article.created_at == @article.updated_at %>
+               <p class="card-text" style="margin-right: 2rem">
+                 <i class="fas fa-user-edit"></i>
+                 Last edit on <%= @article.updated_at.strftime("%B %d, %Y") %>
+              </p>
+             <%  end %>
+          </div>
+        </div>
+        <div>
+          <%= link_to "Edit", edit_article_path(@article), 
+            class:"btn btn-success", style:"width: 5rem; margin-bottom: 1rem;" %>
+          <%= link_to "Delete", article_path(@article),
+            class:"btn btn-success", style:"margin-bottom: 1rem;",
+            method: :delete,
+            data: { confirm: "Are you sure?" }
+          %>
+        </div>
+      </div>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+      <h3>Comments</h3>
+      <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+      <h3>Add a comment:</h3>
+      <%= render 'comments/form' %>
 
-<%= link_to "Back to home", root_path %>
+
+    </div>
+
+    <div style="div-index"> </div>
+
+  </div>
+</div>
+
