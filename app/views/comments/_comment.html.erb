@@ -1,18 +1,22 @@
 <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-
-  <p>
-    <%= link_to 'Destroy Comment', [comment.article, comment],
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-  </p>
-
+  <div class="card" style="width: 40rem; margin-bottom: 1rem !important">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p style="font-size: 1.5rem;"> <%= comment.body %> </p>
+        <hr>
+        <div class="d-inline-flex">
+          <p style="margin-right: 2rem"> <i class="fas fa-user"> </i> By: <%= comment.commenter %> </p>
+          <p> <i class="fas fa-calendar-plus"> </i> Commented on <%= comment.created_at.strftime("%b %d, %Y") %></p>
+        </div>
+        <p>
+          <%= link_to 'Delete Comment', [comment.article, comment],
+            class:"btn btn-success",
+            method: :delete, data: { confirm: "Are you sure?" } 
+          %>
+        </p>
+      </li>
+    </ul>
+  </div>
 <% end %>
+
+

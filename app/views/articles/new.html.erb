@@ -1,4 +1,23 @@
-<h1>New Article</h1>
+<%= render 'navbar' %>
 
-<%= render "form", article: @article %>
+<div class="d-flex" style="width: 100%">
+
+    <div class="div-index"></div>
+
+    <div class="div-indexm d-flex justify-content-center">
+      <div class="m-0 p-2 row justify-content-center">
+        <%= link_to root_path do %>
+          <img src="https://img.icons8.com/ios-filled/50/000000/back.png"/>
+        <% end %>
+        <div class="d-flex justify-content-center">
+          <h1>New Article</h1>
+        </div>
+        <%= render "form", article: @article %>
+      </div>
+    </div>
+
+    <div style="div-index"> </div>
+
+  </div>
+</div>
 

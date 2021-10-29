@@ -1,0 +1,3 @@
+class OthersController < ApplicationController
+
+end
