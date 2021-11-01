@@ -20,37 +20,60 @@
           <div class>
             <p class="card-text" style="margin-right: 2rem">
               <i class="fas fa-user"></i>
-              By: 
+              By: <%= @article.author %>
             </p>
             <p class="card-text" style="margin-right: 2rem">
                <i class="fas fa-calendar-day"></i>
-               Created on <%= @article.created_at.strftime("%B %d, %Y") %>
+               Created on <%= @article.created_at.strftime("%B %d, %Y at %I:%M %p") %>
              </p>
              <% unless @article.created_at == @article.updated_at %>
                <p class="card-text" style="margin-right: 2rem">
                  <i class="fas fa-user-edit"></i>
-                 Last edit on <%= @article.updated_at.strftime("%B %d, %Y") %>
+                 Last edit on <%= @article.updated_at.strftime("%B %d, %Y at %I:%M %p") %>
               </p>
              <%  end %>
           </div>
         </div>
+
+        
         <div>
-          <%= link_to "Edit", edit_article_path(@article), 
-            class:"btn btn-success", style:"width: 5rem; margin-bottom: 1rem;" %>
-          <%= link_to "Delete", article_path(@article),
-            class:"btn btn-success", style:"margin-bottom: 1rem;",
-            method: :delete,
-            data: { confirm: "Are you sure?" }
-          %>
+          <% if user_signed_in? %>
+            <% if @article.author == current_user.username %>
+              <%= link_to "Edit", edit_article_path(@article), 
+                class:"btn btn-success", style:"width: 5rem; margin-bottom: 1rem;" %>
+              <%= link_to "Delete", article_path(@article),
+                class:"btn btn-success", style:"margin-bottom: 1rem;",
+                method: :delete,
+                data: { confirm: "Are you sure?" }
+              %>
+            <% end %>
+          <% end %>
         </div>
+        
+
       </div>
 
-      <h3>Comments</h3>
-      <%= render @article.comments %>
+      <h3 class="my-2">Comments</h3>
+       <% if @article.comments.public_count == 0%>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p>No comments yet. Be the first in comment!</p>
+            </li>
+          </ul>
+        <% else %>
+          <%= render @article.comments %>
+        <% end %>
 
       <h3>Add a comment:</h3>
-      <%= render 'comments/form' %>
-
+      <%if user_signed_in?%>
+        <%= render 'comments/form' %>
+      <% else %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <%= link_to "Log in to comment!", new_user_session_path %>
+          </li>
+        </ul>
+      <% end %>
 
     </div>
 

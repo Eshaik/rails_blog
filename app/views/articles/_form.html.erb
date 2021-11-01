@@ -23,9 +23,18 @@
             <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
         </div>
       </div>
-    <div>
-      <%= form.submit class:"btn btn-success mb-3"%>
-    </div>
+
+      <div style="visibility: hidden" >
+          <div>
+            <%= form.hidden_field :author,  value: current_user.username %>
+        </div>
+      </div> 
+
+      <div>
+        <%= form.submit class:"btn btn-success mb-3"%>
+      </div>
+
+      
     </div>
   </div>
 <% end %>

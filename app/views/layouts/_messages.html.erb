@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <div class="m-auto w-50 alert alert-<%= key %>">
+      <ul>
+        <li>
+          <%= value %>
+        </li>
+      </ul>
+  </div>
+<% end %>
+
