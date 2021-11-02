@@ -1,0 +1,30 @@
+<body class="bg-success" style="overflow: hidden;">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-sm-12">
+        <div class="card shadow-lg border-0 rounded-lg mt-5 mx-auto" style="width: 30rem;">
+          <%= link_to root_path do %>
+            <img src="https://img.icons8.com/ios-filled/50/000000/back.png"/>
+          <% end %>
+
+          <div class="row text-center my-3">
+            <h2 class="mb-3">Forgot your password?</h2>
+
+            <div class="my-3">
+              <i class="fas fa-envelope"></i>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "Enter your mail" %>
+            </div>
+
+            <div class="actions my-1">
+              <%= f.submit "Send me instructions", class: "btn btn-success m-3" %>
+            </div>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</body>

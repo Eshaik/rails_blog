@@ -2,8 +2,8 @@
 
 # Article controller: Controller to set all the methods and relations about Article.
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'Eduin', password: 'secret', except: %i[index show]
-
+  #http_basic_authenticate_with name: 'Eduin', password: 'secret', except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
   def index
     @articles = Article.all
   end
@@ -50,6 +50,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, :author)
   end
 end

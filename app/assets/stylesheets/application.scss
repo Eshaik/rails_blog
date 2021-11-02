@@ -12,6 +12,7 @@
   .div-indexm {
     width: 66%;
   }
+  
 }
 @media (min-width: 1301px) {
   .div-index  {
@@ -22,3 +23,26 @@
   }
 }
 
+/*flash*/
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+  
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-success {
+  visibility: hidden;
+}
+
+.alert-notice {
+  visibility: hidden;
+}
