@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Follows controller: To controller all the methods about follows.
 class FollowsController < ApplicationController
   before_action :authenticate_user!
 

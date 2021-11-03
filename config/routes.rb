@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'articles#index'
-  get '/notfound', to: "others#notfound"
+  get '/notfound', to: 'others#notfound'
 
   resources :users do
     member do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follows, only: [:create, :destroy]
+  resources :follows, only: %i[create destroy]
 
   resources :articles do
     resources :comments

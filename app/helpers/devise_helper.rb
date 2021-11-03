@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# module to send error messages in the login.
 module DeviseHelper
   def devise_error_messages!
     return '' if resource.errors.empty?
@@ -9,6 +12,5 @@ module DeviseHelper
       #{messages}
     </div>
     HTML
-    
   end
 end
