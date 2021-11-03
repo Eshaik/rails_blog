@@ -21,7 +21,7 @@
             <p class="card-text" style="margin-right: 2rem">
               <i class="fas fa-user"></i>
               By: 
-                <%= link_to @article.author, '/users/'+(User.find_by(username: @article.author).id).to_s, class:"lt-green"%>  
+                <%= link_to @article.author, user_path(f_author(@article)), class:"lt-green"%>  
             </p>
             <p class="card-text" style="margin-right: 2rem">
                <i class="fas fa-calendar-day"></i>
@@ -67,10 +67,10 @@
 
       <h3>Add a comment:</h3>
       <%if user_signed_in?%>
-        <%if current_user.following?(User.find_by(username: @article.author)) || current_user.username == @article.author%>
+        <%if fom(current_user,@article)%>
           <%= render 'comments/form' %>
         <% else %>
-          <%= link_to "To comment follow the article's author", '/users/'+(User.find_by(username: @article.author).id).to_s, class:"lt-green"%>
+          <%= link_to "To comment follow the article's author", user_path(f_author(@article)), class:"lt-green"%>
         <% end %>
       <% else %>
         <ul class="list-group list-group-flush">
