@@ -47,6 +47,10 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def public_count_user(user)
+    where(status: 'public').count && :author == @user.username
+  end
+
   private
 
   def article_params

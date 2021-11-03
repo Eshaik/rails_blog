@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   root 'articles#index'
   get '/notfound', to: "others#notfound"
 
-  #devise_scope :user do
-  #  get '/signout', to: 'devise/sessions#destroy', as: :signout
-  #end
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :follows, only: [:create, :destroy]
 
   resources :articles do
     resources :comments

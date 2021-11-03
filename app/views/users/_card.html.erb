@@ -1,0 +1,26 @@
+<%= link_to article, class:"index-link" do %>
+  <div class="m-0 p-2 row justify-content-center">
+    <div class="card col-auto text-center" style="width: 40rem; height: 10rem;">
+      <div class="card-body" >
+        <div>
+          <h5 class="card-title card-header"> <%= article.title %> </h5>
+          <h6 class="card-subtitle m-1 text-muted">By: <%= article.author %> </h6>
+        </div>
+        
+        <p class="card-text">
+            <%= article.body.first(25) + "..." %>
+          </p>
+        <div class="d-inline-flex">
+          <p class="card-text" style="margin-right: 2rem">
+            <i class="fas fa-calendar-day"></i>
+            <%= article.created_at.strftime("%b %d, %Y") %>
+          </p>
+          <p class= "card-text">
+            <i class="fas fa-comments"></i>
+            <%= article.comments.public_count %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

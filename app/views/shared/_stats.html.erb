@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <% @user ||= current_user %>
+  <div class="d-inline-flex">
+      <strong class="" id="following" >
+        <%= @user.following.count %>
+        following
+      </strong>
+      
+
+      <strong id="followers" style="margin-left: 3rem">
+        <%= @user.followers.count %>
+        followers
+      </strong>
+      
+  </div>
+<% end %>
