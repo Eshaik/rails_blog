@@ -2,8 +2,8 @@
 
 module UsersHelper
 
-  def fom(user, article)
-    user.following?(User.find_by(username: article.author)) || user.username == article.author
+  def f_m(user, article)
+    article.is_owner?(user) || user.is_a_follower?(article.owner)
   end
 
 end

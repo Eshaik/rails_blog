@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   # Returns true if the current user is following the other user.
-  def following?(other_user)
+  def is_a_follower?(other_user)
     following.include?(other_user)
   end
 

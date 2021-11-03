@@ -1,6 +1,4 @@
 <%= render 'navbar' %>
-
-
 <div class="d-flex" style="width: 100%">
   <div class="div-index"></div>
   <div class="div-indexm">
@@ -21,7 +19,7 @@
             <p class="card-text" style="margin-right: 2rem">
               <i class="fas fa-user"></i>
               By: 
-                <%= link_to @article.author, user_path(f_author(@article)), class:"lt-green"%>  
+                <%= link_to @article.author, user_path(@article.owner), class:"lt-green"%>  
             </p>
             <p class="card-text" style="margin-right: 2rem">
                <i class="fas fa-calendar-day"></i>
@@ -67,10 +65,10 @@
 
       <h3>Add a comment:</h3>
       <%if user_signed_in?%>
-        <%if fom(current_user,@article)%>
+        <%if f_m(current_user, @article)%>
           <%= render 'comments/form' %>
         <% else %>
-          <%= link_to "To comment follow the article's author", user_path(f_author(@article)), class:"lt-green"%>
+          <%= link_to "To comment follow the article's author", user_path(@article.owner), class:"lt-green"%>
         <% end %>
       <% else %>
         <ul class="list-group list-group-flush">
