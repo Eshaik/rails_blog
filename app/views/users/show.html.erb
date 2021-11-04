@@ -30,12 +30,12 @@
                 <div class="d-inline-flex">
                   <p class="mb-3">
                     <i class="fas fa-newspaper"></i> Articles:
-                    <%= (Article.select { |a| a.author == @user.username && a.status == 'public'}).length %> 
+                    <%= count_own_articles_p(@user) %> 
                   </p>
                   
                   <p class="mb-3" style="margin-left: 3rem">
                     <i class="fas fa-comments"></i> Comments:
-                    <%= (Comment.select { |c| c.commenter == @user.username  && c.status == 'public' }).length %>   
+                    <%= count_own_comments_p(@user) %>
                   </p>
                   
                 </div>

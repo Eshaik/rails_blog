@@ -4,4 +4,9 @@
 class Comment < ApplicationRecord
   include Visible
   belongs_to :article
+
+  def owner
+    User.find_by(username: self.commenter)
+  end
+  
 end
