@@ -9,7 +9,9 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
 
-
+  scope :publics, -> {where ("status = 'public' ")}
+  scope :owner_u, -> (user) { where("author = ?", user.username) }
+  
   def is_owner?(user)
     self.author == user.username
   end
