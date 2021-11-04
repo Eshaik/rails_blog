@@ -1,0 +1,56 @@
+<%= render 'articles/navbar' %>
+<div class="d-flex" style="width: 100%">
+
+    <div class="div-index"></div>
+
+    <div class="div-indexm">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-sm-12">
+          <div class="card shadow-lg border-0 rounded-lg mt-5 mx-auto">
+            <%= link_to root_path do %>
+              <img src="https://img.icons8.com/ios-filled/50/000000/back.png"/>
+            <% end %>
+            <div class="row text-center my-3">
+              <div>
+                <h1 style="text-align: center;"> <%= @user.username %></h1>
+                <hr>
+              </div>
+              <div class="my-3">
+
+                <div class="m-0 p-2 row justify-content-center">
+                  <div class="mb-3">
+                    <strong>About him/her:</strong> <br>
+                    <%= @user.info%>
+                  </div>
+                  
+                  <p> <strong> Account created at: </strong> <br> <%= @user.created_at.strftime("%B %d, %Y")%></p>
+                  
+                </div>
+
+                <div class="d-inline-flex">
+                  <p class="mb-3">
+                    <i class="fas fa-newspaper"></i> Articles:
+                    <%= Article.publics.owner_u(@user).count %> 
+                  </p>
+                  
+                  <p class="mb-3" style="margin-left: 3rem">
+                    <i class="fas fa-comments"></i> Comments:
+                    <%= Comment.publics.owner_u(@user).count %>
+                  </p>
+                  
+                </div>
+                <section class="stats">
+                  <%= render 'shared/stats' %>
+                </section>
+
+                <%= render 'follow_form' if user_signed_in? %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="div-index"> </div>
+  </div>
+</div>

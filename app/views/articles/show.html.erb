@@ -1,6 +1,4 @@
 <%= render 'navbar' %>
-
-
 <div class="d-flex" style="width: 100%">
   <div class="div-index"></div>
   <div class="div-indexm">
@@ -20,7 +18,8 @@
           <div class>
             <p class="card-text" style="margin-right: 2rem">
               <i class="fas fa-user"></i>
-              By: <%= @article.author %>
+              By: 
+                <%= link_to @article.author, user_path(@article.owner), class:"lt-green"%>  
             </p>
             <p class="card-text" style="margin-right: 2rem">
                <i class="fas fa-calendar-day"></i>
@@ -38,7 +37,7 @@
         
         <div>
           <% if user_signed_in? %>
-            <% if @article.author == current_user.username %>
+            <% if @article.owner == current_user %>
               <%= link_to "Edit", edit_article_path(@article), 
                 class:"btn btn-success", style:"width: 5rem; margin-bottom: 1rem;" %>
               <%= link_to "Delete", article_path(@article),
@@ -54,7 +53,7 @@
       </div>
 
       <h3 class="my-2">Comments</h3>
-       <% if @article.comments.public_count == 0%>
+       <% if @article.comments.publics.count == 0%>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <p>No comments yet. Be the first in comment!</p>
@@ -66,11 +65,15 @@
 
       <h3>Add a comment:</h3>
       <%if user_signed_in?%>
-        <%= render 'comments/form' %>
+        <%if f_m(current_user, @article)%>
+          <%= render 'comments/form' %>
+        <% else %>
+          <%= link_to "To comment follow the article's author", user_path(@article.owner), class:"lt-green"%>
+        <% end %>
       <% else %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <%= link_to "Log in to comment!", new_user_session_path %>
+            <%= link_to "Log in to comment!", new_user_session_path , class:"lt-green"%>
           </li>
         </ul>
       <% end %>

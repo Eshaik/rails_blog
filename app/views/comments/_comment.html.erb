@@ -1,4 +1,4 @@
-<% unless comment.archived? %>
+<% unless comment.archived?%>
   <div class="card" style="width: 40rem; margin-bottom: 1rem !important">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
@@ -10,7 +10,7 @@
         </div>
 
         <% if user_signed_in? %>
-          <% if comment.commenter == current_user.username %>
+          <% if comment.owner == current_user %>
             <p>
               <%= link_to 'Delete Comment', [comment.article, comment],
                 class:"btn btn-success",
