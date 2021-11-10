@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A blog made in Kommit's Bootcamp 2021
+## Watch it on:
+- https://rails-blog-esc.herokuapp.com/
 
-Things you may want to cover:
+## Technologies used
+- Ruby on Rails 6.1.4.1
+- PostgreSQL 14.0
+- Bootstrap
+- FontAwesome
 
-* Ruby version
+## Install dependencies
+- bundle install
+- yarn add bootstrap jquery @popperjs/core popper.js OR npm install bootstrap jquery @popperjs/core popper.js
 
-* System dependencies
+## Database
+- rails db:create db:migrate db:seed
 
-* Configuration
+## Webpack
+- rails webpacker:clean && rails webpacker:clobber && rails webpacker:compile
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Run app
+- rails s
