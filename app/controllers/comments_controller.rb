@@ -2,8 +2,8 @@
 
 # Comment controller: To controller all the methods about comments.
 class CommentsController < ApplicationController
-  # http_basic_authenticate_with name: 'Eduin', password: 'secret', only: :destroy
-  before_action :authenticate_user!, only: :destroy
+  before_action :authenticate_user!, only: %i[create destroy]
+  
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
